@@ -195,7 +195,9 @@ module FakeS3
       response.status = 200
       response.body = ""
       response['Content-Type'] = "text/xml"
-      response['Access-Control-Allow-Origin'] = @cors_allow_origin
+      response['Access-Control-Allow-Origin']   = @cors_allow_origin
+      response['Access-Control-Allow-Headers']  = @cors_post_put_allow_headers
+      response['Access-Control-Expose-Headers'] = @cors_expose_headers
 
       case s_req.type
       when Request::COPY
